@@ -17,7 +17,7 @@ def create_view(request, *arg,**kwargs):
     a=0
     for datas in data :
         i=i+1
-    
+  
     day = (data[i].jours).split(";")
     matiere = data[i].matiere.split(";")
     print(data[i].heure)
@@ -68,19 +68,15 @@ def create_view1(request, *arg,**kwargs):
     data = DataEncadreur.objects.all()
  
     i=-1
-   
+    ctxx={
+        
+    }
     for datas in data :
         i=i+1
     
 
    
-    
-    ctxx={
-        "msg":"mail envoyer avec succes",
-                    "data":data[i],
-                    
-                    'i':i
-    }
+  
    
     if request.method == "POST":
         email = request.POST.get('email')
@@ -100,13 +96,14 @@ def create_view1(request, *arg,**kwargs):
                                 context=context)
             
         if has_send:
-            ctx = {"msg":"mail envoyer avec succes",
+            ctxx = {"msg":"mail envoyer avec succes",
                     "data":data[i],
                  
                     'i':True,
                    }
         else:
-            ctx ={"msg":"une erreur c'est produise veillez ressayer "}    
+            ctxx ={"msg":"une erreur c'est produise veillez ressayer "
+                  ,"data":data[i],}    
 
     return  render(request, 'index2.html',ctxx) 
 
