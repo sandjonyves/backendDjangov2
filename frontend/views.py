@@ -20,11 +20,13 @@ def create_view(request, *arg,**kwargs):
   
     day = (data[i].jours).split(";")
     matiere = data[i].matiere.split(";")
-    print(data[i].heure)
+    
     count2 = len(day)
     count  = len(matiere) 
     ctxx={
-        
+         "data":data[i],
+                    'count':count,
+                    'count2':count2,
     }
    
     if request.method == "POST":
@@ -67,15 +69,17 @@ def create_view(request, *arg,**kwargs):
 def create_view1(request, *arg,**kwargs):
     data = DataEncadreur.objects.all()
  
-    i=-1
-    ctxx={
-        
-    }
+    i=0
+   
     for datas in data :
         i=i+1
     
 
-   
+    ctxx={
+        "data":data[i],
+                 
+        
+    }
   
    
     if request.method == "POST":
