@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "vercel": "^31.3.1"
+  },
+  "scripts": {
+    "deploy" : "python3 manage.py migrate && python3 manage.py collectstatic --noinput",
+    "build" : "npm run deploy"
+  }
+}

@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
-from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +28,7 @@ SECRET_KEY = 'django-insecure-ep)k46mem25p7hlz8h1)6&n@+748ya)vkl+_1&v2^!0+^(k%&(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','locahost']
 
 
 # Application definition
@@ -82,14 +80,34 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        #'DATABASE_URL' : 'postgresql://postgres:TxnYYSWcsZBlk3d4PeH9@containers-us-west-200.railway.app:6276/railway',
+        'NAME' : 'railway',
+        'USER' : 'postgres',
+        'PASSWORD' : 'DbxosrmgPpuy1OTh06UJ',
+        'HOST' : 'containers-us-west-105.railway.app',
+        'PORT' : '5855',
     }
 }
+# PGDATABASE
+# railway
+# PGHOST
+# containers-us-west-105.railway.app
+# PGPASSWORD
+# DbxosrmgPpuy1OTh06UJ
+# PGPORT
+# 5855
+# PGUSER
+# postgres
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600,ssl_require=True)
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -125,7 +143,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR/"staicfiles_build"/"static" 
 
 CORS_ORIGIN_ALLOW_ALL = True
 
