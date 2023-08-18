@@ -18,6 +18,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIRS  = os.path.join(BASE_DIR,'templates')
 
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -28,10 +29,19 @@ SECRET_KEY = 'django-insecure-ep)k46mem25p7hlz8h1)6&n@+748ya)vkl+_1&v2^!0+^(k%&(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','locahost']
-
+ALLOWED_HOSTS = ['127.0.0.1','locahost']
+# ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','locahost']
 
 # Application definition
+CORS_ORIGIN_ALLOW_ALL=False
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000'
+]
+CORS_ORIGIN_REGEX_WHITELIST = [
+    'http://localhost:3000'
+]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -61,7 +71,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIRS],
+        'DIRS': [os.path.join(BASE_DIR,'build') ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -142,14 +152,34 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'static/' 
 
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+STATICFILES_DIRS = [
+   
+    os.path.join(BASE_DIR,'build','static'), 
+]
+
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapî.AutoSchema',
+   
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.AllowAny'
+    ],
+}
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'sandjonyves@gmail.com'

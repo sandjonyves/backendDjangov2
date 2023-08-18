@@ -17,10 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from frontend.views import create_view,create_view1
+from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('data/', include('frontend.urls')),
-    path('' ,create_view,name='create_view'),
-     path('Encadreur/' ,create_view1,name='create_view2')
-]
+    path('Cl/' ,create_view,name='create_view'),
+     path('Encadreur/' ,create_view1,name='create_view2'),
+     path('' ,views.index,name='index')
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

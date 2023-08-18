@@ -17,6 +17,7 @@ def create_view(request, *arg,**kwargs):
     a=0
     for datas in data :
         i=i+1
+    
   
     day = (data[i].jours).split(";")
     matiere = data[i].matiere.split(";")
@@ -60,7 +61,7 @@ def create_view(request, *arg,**kwargs):
                     'count2':count2,
                     'i':False}    
 
-    return  render(request, 'index.html',ctxx) 
+    return  render(request, 'index1.html',ctxx) 
 
 
 
@@ -69,7 +70,7 @@ def create_view(request, *arg,**kwargs):
 def create_view1(request, *arg,**kwargs):
     data = DataEncadreur.objects.all()
  
-    i=0
+    i=-1
    
     for datas in data :
         i=i+1
