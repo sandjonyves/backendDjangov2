@@ -32,7 +32,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','locahost']
 
 # Application definition
-CORS_ORIGIN_ALLOW_ALL=False
+# CORS_ORIGIN_ALLOW_ALL=True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
