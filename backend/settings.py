@@ -28,12 +28,12 @@ TEMPLATES_DIRS  = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = 'django-insecure-ep)k46mem25p7hlz8h1)6&n@+748ya)vkl+_1&v2^!0+^(k%&('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','locahost','parwiz.pythonanywhere.com']
+ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','locahost']
 
 # Application definition
-CORS_ORIGIN_ALLOW_ALL=False
+CORS_ORIGIN_ALLOW_ALL=True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
